@@ -1,5 +1,5 @@
 {% set name = "jupyterlab_vim" %}
-{% set version = "0.15.1" %}
+{% set version = "0.15.1+leave_current_mode" %}
 
 
 package:
@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jupyterlab_vim-{{ version }}.tar.gz
-  sha256: c4282beb4a67d21f7126e32cda19f99ed324a1d3fc494560e393fe53f7519a74
+  git_url: https://github.com/asford/jupyterlab-vim
+  git_rev: leave_current_mode_default
 
 build:
   number: 0
@@ -16,6 +16,8 @@ build:
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
+  build:
+    - nodejs <15.0
   host:
     - jupyter-packaging >=0.10,<2.0
     - jupyterlab >=3.1,<4.0
